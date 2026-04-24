@@ -1,160 +1,336 @@
-<!DOCTYPE html><html lang="en"><head><meta name="x-poe-datastore-behavior" content="local_only"><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+<!DOCTYPE html>
+<html>
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yimo Yan</title>
 
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
 <style>
+
+:root {
+    --primary: #8b3a3a;        /* accent color */
+    --secondary: #f5f2ee;      /* background */
+    --card: #ffffff;
+    --text: #333;
+}
+
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
-.section-title {
-  border-bottom: 2px solid #e5e7eb;
-  padding-bottom: 6px;
-  margin-bottom: 20px;
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background-color: var(--secondary);
+    color: var(--text);
 }
+
+/* ================= NAVIGATION ================= */
+
+nav {
+    background: white;
+    padding: 15px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #ddd;
+}
+
+nav a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: 500;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* ================= LAYOUT ================= */
+
+.container {
+    display: flex;
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+/* LEFT PROFILE PANEL */
+
+.sidebar {
+    width: 280px;
+    padding-right: 30px;
+}
+
+.sidebar img {
+    width: 200px;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.sidebar h1 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.sidebar a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    text-decoration: underline;
+}
+
+/* RIGHT CONTENT */
+
+.content {
+    flex: 1;
+}
+
+.section {
+    background: var(--card);
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.section h2 {
+    margin-top: 0;
+    border-left: 4px solid var(--primary);
+    padding-left: 10px;
+    color: var(--primary);
+}
+
+.logo {
+    height: 50px;
+    margin-top: 10px;
+}
+
+.paper-img {
+    max-width: 500px;
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 6px;
+}
+
+strong {
+    color: var(--primary);
+}
+
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        text-align: center;
+        padding-right: 0;
+        margin-bottom: 30px;
+    }
+}
+
 </style>
 </head>
 
-<body class="bg-gray-50 text-gray-800">
+<body>
 
-<div class="max-w-6xl mx-auto px-6 py-10">
+<!-- ================= NAV BAR ================= -->
 
-<!-- Header -->
-<header class="mb-12">
-  <h1 class="text-4xl font-bold">Yimo Yan</h1>
-  <p class="mt-2">
-    Email: <a href="mailto:yanyimo1@gmail.com" class="text-blue-600">yanyimo1@gmail.com</a> |
-    <a href="https://scholar.google.com" target="_blank" class="text-blue-600">Google Scholar</a> |
-    Scopus ID: 57673562500
-  </p>
-</header>
-
-<!-- Navigation -->
-<nav class="mb-12 text-sm uppercase tracking-wide">
-  <a href="#education" class="mr-6 hover:text-blue-600">Education</a>
-  <a href="#experience" class="mr-6 hover:text-blue-600">Experience</a>
-  <a href="#publications" class="mr-6 hover:text-blue-600">Publications</a>
-  <a href="#services" class="mr-6 hover:text-blue-600">Professional Services</a>
-  <a href="#grants" class="mr-6 hover:text-blue-600">Grants</a>
-  <a href="#teaching" class="mr-6 hover:text-blue-600">Teaching</a>
-  <a href="#recruitment" class="hover:text-blue-600">Recruitment</a>
+<nav>
+<a href="#experience">Experience</a>
+<a href="#education">Education</a>
+<a href="#publications">Publications</a>
+<a href="#service">Professional Service</a>
+<a href="#grants">Grants</a>
+<a href="#teaching">Teaching</a>
+<a href="#recruitment">Recruitment</a>
 </nav>
 
-<!-- Education -->
-<section id="education" class="mb-16">
-  <h2 class="text-2xl font-semibold section-title">Education</h2>
+<div class="container">
 
-  <div class="mb-6">
-    <h3 class="font-semibold">The University of Hong Kong</h3>
-    <p>Ph.D. in Data and Systems Engineering (Sep 2020 – Sep 2025)</p>
-    <p>Supervisor: Prof. Yong-hong Kuo</p>
-  </div>
+<!-- ================= LEFT PANEL ================= -->
 
-  <div class="mb-6">
-    <h3 class="font-semibold">The University of Hong Kong</h3>
-    <p>Postdoctoral Fellowship (URC Link) (Oct 2025 – Present)</p>
-    <p>Supervisor: Prof. Yong-hong Kuo</p>
-  </div>
+<div class="sidebar">
 
-  <div class="mb-6">
-    <h3 class="font-semibold">Imperial College London</h3>
-    <p>MEng in Civil and Environmental Engineering (Sep 2016 – Jun 2020)</p>
-    <p>Supervisor: Prof. Panagiotis Angeloudis</p>
-  </div>
+<img src="personalphoto.JPG">
 
-  <div>
-    <h3 class="font-semibold">University of Illinois at Chicago</h3>
-    <p>Research Visitor (Mar 2023 – Aug 2024)</p>
-    <p>Host: Prof. Bo Zou</p>
-  </div>
-</section>
+<h1>Yimo Yan</h1>
 
-<!-- Experience -->
-<section id="experience" class="mb-16">
-  <h2 class="text-2xl font-semibold section-title">Experience</h2>
-
-  <div>
-    <h3 class="font-semibold">American University of Sharjah, United Arab Emirates</h3>
-    <p>Assistant Professor (Sep 2026 – Present)</p>
-  </div>
-</section>
-
-<!-- Publications -->
-<section id="publications" class="mb-16">
-  <h2 class="text-2xl font-semibold section-title">Publications</h2>
-
-  <div class="space-y-6 text-sm">
-
-    <div>
-      <p><strong>Yan, Y.</strong>, Cui, S., Liu, J., Zhao, Y., Zhou, B., &amp; Kuo, Y. H. (2024).
-      Multimodal Fusion for Large-Scale Traffic Prediction with Heterogeneous Retentive Networks.
-      <em>Information Fusion, 114</em>, 102695.</p>
-    </div>
-
-    <div>
-      <p>Ying, C., Chow, A. H., <strong>Yan, Y.</strong>, Kuo, Y. H., &amp; Wang, S. (2024).
-      Adaptive rescheduling of rail transit services with short-turnings under disruptions via a multi-agent deep reinforcement learning approach.
-      <em>Transportation Research Part B</em>.</p>
-      <img src="Metro.jpg" class="mt-3 w-full max-w-md">
-    </div>
-
-    <div>
-      <p>Kang, Y., Wang, R., Qin, Z., Yang, P., &amp; <strong>Yan, Y.</strong> (2025).
-      Performance Analysis of Multi-Type Robot Cooperative Warehouse Systems.
-      <em>International Journal of Production Research</em>.</p>
-      <img src="Warehouse2.jpg" class="mt-3 w-full max-w-md">
-    </div>
-
-    <div>
-      <p>Cui, S., Shen, S., <strong>Yan, Y.</strong> et al. (2025).
-      TransMoE: Multimodal Traffic Prediction with Large Language Model and Mixture of Experts.
-      Major Revision, <em>Transportation Research Part C</em>.</p>
-      <img src="TransMoE.jpg" class="mt-3 w-full max-w-md">
-    </div>
-
-    <div>
-      <p><strong>Yan, Y.</strong> et al. (2025).
-      Structure-Informed Data-Driven Lateral Transshipment Policy for Multi-Retailer System.
-      Ongoing Work.</p>
-      <img src="Lateral.jpg" class="mt-3 w-full max-w-md">
-    </div>
-
-  </div>
-</section>
-
-<!-- Professional Services -->
-<section id="services" class="mb-16">
-  <h2 class="text-2xl font-semibold section-title">Professional Services</h2>
-
-  <ul class="list-disc pl-6 space-y-2 text-sm">
-    <li>Reviewed 30 papers for Transportation Research Part E</li>
-    <li>Reviewed 5 papers for PLOS One</li>
-    <li>Reviewed 1 paper for European Journal of Operational Research</li>
-    <li>Reviewed 5 papers for International Journal of Production Research</li>
-    <li>Supervised multiple MSc dissertations in Industrial Engineering and Logistics Management</li>
-  </ul>
-</section>
-
-<!-- Empty Sections -->
-<section id="grants" class="mb-16">
-  <h2 class="text-2xl font-semibold section-title">Grants</h2>
-</section>
-
-<section id="teaching" class="mb-16">
-  <h2 class="text-2xl font-semibold section-title">Teaching</h2>
-</section>
-
-<section id="recruitment" class="mb-16">
-  <h2 class="text-2xl font-semibold section-title">Recruitment</h2>
-</section>
-
-<footer class="text-center text-xs text-gray-500 mt-20">
-  © 2026 Yimo Yan
-</footer>
+<p>
+yanyimo1@gmail.com<br>
+<a href="https://scholar.google.com/citations?user=KCIlRlMAAAAJ&hl=en" target="_blank">Google Scholar</a><br>
+Scopus ID: 57673562500
+</p>
 
 </div>
 
+<!-- ================= RIGHT CONTENT ================= -->
 
-</body></html>
+<div class="content">
+<div class="section" id="about">
+<h2>About Me</h2>
+
+<p>
+Hi, my name is Yimo Yan. I am an upcoming Assistant Professor at the American University of Sharjah, United Arab Emirates. My research focuses on reinforcement learning, multimodal learning, and data-driven optimization for transportation, logistics, and supply chain systems. I am particularly interested in integrating large language models with operational research and decision-making frameworks to address complex real-world challenges.
+</p>
+
+<p>
+My work has been published in leading journals including <em>Information Fusion</em>, <em>Transportation Research Part series</em>, <em>International Journal of Production Research</em>, <em>Health Care Management Science</em>. I received my Ph.D. from The University of Hong Kong, where I was advised by Prof. Yong-hong Kuo. I welcome collaboration opportunities in AI-driven operations, intelligent transportation systems, and multimodal decision analytics.
+</p>
+
+</div>
+<div class="section" id="experience">
+<h2>Experience</h2>
+
+<p>
+<strong>American University of Sharjah, United Arab Emirates</strong><br>
+Department of Industrial Engineering<br>
+Assistant Professor<br>
+Sep 2026 – Now
+</p>
+
+<img src="AUS_logo.png" class="logo">
+
+</div>
+
+<div class="section" id="education">
+<h2>Education</h2>
+
+<p>
+<strong>The University of Hong Kong</strong><br>
+University Research Committee Postdoctoral Fellowship<br>
+Oct 2025 – Aug 2026<br>
+Supervisor: Prof. Yong-hong Kuo
+</p>
+
+<p>
+<strong>The University of Hong Kong</strong><br>
+Doctor of Philosophy in Industrial Engineering<br>
+Sep 2020 – Sep 2025<br>
+Supervisor: Prof. Yong-hong Kuo
+</p>
+
+<p>
+<strong>Imperial College London</strong><br>
+Master of Engineering in Civil and Environmental Engineering<br>
+Sep 2016 – Jun 2020<br>
+Thesis Supervisor: Prof. Panagiotis Angeloudis
+</p>
+
+<img src="HKULogo.png" class="logo">
+<img src="Imperial1.png" class="logo">
+
+</div>
+
+<div class="section" id="publications">
+<h2>Publications</h2>
+
+<p>
+Yan, Y., Cui, S., Liu, J., Zhao, Y., Zhou, B., & Kuo, Y. H. (2024). Multimodal Fusion for Large-Scale Traffic Prediction with Heterogeneous
+Retentive Networks. Information Fusion, 114, 102695.
+</p>
+<p>
+Yan, Y., Wen, H., Deng, Y., Chow, A. H., Wu, Q., & Kuo, Y. H. (2024). A mixed-integer programming-based Q-learning approach for electric
+bus scheduling with multiple termini and service routes. Transportation Research Part C: Emerging Technologies, 162, 104570.
+</p>
+<p>
+Yan, Y., Deng, Y., Cui, S., Kuo, Y. H., Chow, A. H., & Ying, C. (2023). A policy gradient approach to solving dynamic assignment problem for
+on-site service delivery. Transportation Research Part E: Logistics and Transportation Review, 178, 103260.
+</p>
+<p>
+Yan, Y., Chow, A. H., Ho, C. P., Kuo, Y. H., Wu, Q., & Ying, C. (2022). Reinforcement learning for logistics and supply chain management:
+Methodologies, state of the art, and future opportunities. Transportation Research Part E: Logistics and Transportation Review, 162, 102712.
+</p>
+<p>
+Wu, Q., Han, J., Yan, Y., Kuo, Y. H., & Shen, Z. J. M. (2025). Reinforcement learning for healthcare operations management: methodological
+framework, recent developments, and future research directions. Health Care Management Science, 28(2), 298.
+</p>
+<p>
+Kang, Y., Wang, R., Qin, Z., Yang, P., & Yan, Y. (2025). Warehouses with heterogeneous robots collaboration: operational policies and
+performance analysis. International Journal of Production Research, 1-29.
+</p>
+<img src="Warehouse2.png" class="paper-img">
+<p>
+Deng, Y., Chow, A. H., Yan, Y., Su, Z., Zhou, Z., & Kuo, Y. H. (2024). Hierarchical production control and distribution planning under retail
+uncertainty with reinforcement learning. International Journal of Production Research, 1-19.
+</p>
+<p>
+Ying, C., Chow, A. H., Yan, Y., Kuo, Y. H., & Wang, S. (2024). Adaptive rescheduling of rail transit services with short-turnings under
+disruptions via a multi-agent deep reinforcement learning approach. Transportation Research Part B: Methodological, 188, 103067.
+</p>
+<img src="Metro.png" class="paper-img">
+<h3>Submitted Research Works</h3>
+<p>
+Cui, S., Shen, S., Yan, Y., et al. (2025).
+TransMoE: Multimodal Traffic Prediction with Large Language Model and Mixture of Experts.
+Transportation Research Part C: Emerging Technologies. (Major Revision)
+</p>
+<img src="moe.png" class="paper-img">
+<p>
+Yan, Y., et al. (2025).
+Large Language Models for Traffic and Transportation Research: Methodologies, State of the Art, and Future Opportunities.
+Information Fusion. (Major Revision)
+</p>
+<p>
+Yan, Y., et al. (2025).
+Event-driven policy optimization for dynamic ambulance dispatch: An attention-based reinforcement learning approach.
+Transportation Research Part E. (Major Revision)
+</p>
+<h3>Ongoing Research</h3>
+<p>
+Structure-Informed Data-Driven Lateral Transshipment Policy for Multi-Retailer System.
+</p>
+<img src="Lateral.png" class="paper-img">
+<p>
+Large Language Models for Traffic and Transportation Research. (Major Revision, Information Fusion)
+</p>
+<p>
+TransMoE: Multimodal Traffic Prediction with Large Language Model and Mixture of Experts. (Major Revision, TR Part C)
+</p>
+<p>
+Event-driven policy optimization for dynamic ambulance dispatch. (Major Revision, TR Part E)
+</p>
+
+
+</div>
+
+<div class="section" id="service">
+<!-- ================= PROFESSIONAL SERVICE ================= -->
+<h2>Professional Service</h2>
+<h3>Supervision of Master’s Dissertation</h3>
+<p>Multiple master dissertations in reinforcement learning, warehouse systems, supply chain LLM systems, and ambulance dispatch optimization.</p>
+<h3>Journal Reviewer</h3>
+<p>
+Transportation Research Part E;
+European Journal of Operational Research;
+International Journal of Production Research;
+PLOS One.
+</p>
+<h3>Student Helper & Society Participation</h3>
+<p>
+Hong Kong Society for Transportation Studies;
+HKU Institute of Transport Studies.
+</p>
+
+</div>
+
+<div class="section" id="grants">
+<h2>Grants</h2>
+</div>
+
+<div class="section" id="teaching">
+<h2>Teaching</h2>
+</div>
+
+<div class="section" id="recruitment">
+<h2>Recruitment</h2>
+</div>
+
+</div>
+</div>
+
+</body>
+</html>
