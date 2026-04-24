@@ -151,63 +151,68 @@ strong {
 
 @media (max-width: 900px) {
 
-    nav {
-        padding: 15px 20px;
+    .container {
+        flex-direction: column;
+        padding: 20px 15px;
+    }
+
+    /* ✅ 让 sidebar 成为第一个 section */
+    .sidebar {
+        width: 100%;
+        padding: 0;
+        margin-bottom: 25px;
         text-align: center;
+        order: -1;
     }
 
-    nav a {
-        display: block;
-        margin: 8px 0;
+    /* ✅ 让内容在下面 */
+    .content {
+        width: 100%;
     }
 
-    nav button {
-        float: none !important;
-        display: block;
-        margin: 15px auto 0 auto;
-        width: 160px;
-        border-radius: 20px;
-        border: 1px solid #ddd;
-        background: #f3f3f3;
-    }
-}
-@media (max-width: 900px) {
-
+    /* ✅ 图片更自然 */
     .sidebar img {
-        width: 150px;
+        width: 160px;
+        margin-bottom: 15px;
     }
 
     .sidebar h1 {
         font-size: 28px;
+        margin-bottom: 10px;
     }
 
     .sidebar p {
         font-size: 16px;
         line-height: 1.6;
     }
-}
-@media (max-width: 900px) {
 
+    /* ✅ About section 看起来更像独立块 */
     .section {
-        padding: 20px;
+        padding: 22px;
     }
 
-    .section h2 {
-        font-size: 22px;
-    }
-
-    .paper-img {
-        max-width: 100%;
-    }
-
+    /* ✅ Experience 等条目改成上下排 */
     .item {
         flex-direction: column;
         gap: 10px;
     }
 
     .item img.logo {
-        height: 50px;
+        height: 45px;
     }
+
+}
+@media (max-width: 900px) {
+
+    body {
+        background: #f7f5f3;
+    }
+
+    .section {
+        box-shadow: none;
+        margin-bottom: 20px;
+    }
+
 }
 p {
     line-height: 1.7;
