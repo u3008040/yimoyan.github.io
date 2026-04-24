@@ -7,6 +7,35 @@
 
 <style>
 
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+
+.item-header .location {
+    font-style: italic;
+    color: #666;
+    font-weight: 500;
+}
+
+.item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.item img.logo {
+    height: 70px;
+    margin-top: 5px;
+}
+
+.item-text {
+    flex: 1;
+}
+
 :root {
     --primary: #8b3a3a;        /* accent color */
     --secondary: #f5f2ee;      /* background */
@@ -65,7 +94,7 @@ nav a:hover {
 
 .sidebar img {
     width: 200px;
-    border-radius: 50%;
+    border-radius: 8px;   /* rectangle instead of circle */
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
@@ -185,43 +214,72 @@ My work has been published in leading journals including <em>Information Fusion<
 <div class="section" id="experience">
 <h2>Experience</h2>
 
-<p>
-<strong>American University of Sharjah, United Arab Emirates</strong><br>
-Department of Industrial Engineering<br>
-Assistant Professor<br>
-Sep 2026 – Now
-</p>
-
-<img src="AUS_logo.png" class="logo">
+<div class="item">
+    <img src="AUS_logo.png" class="logo">
+    <div class="item-text">
+        <div class="item-header">
+        <strong>American University of Sharjah</strong>
+        <span class="location">United Arab Emirates</span>
+    </div>
+        <p>
+        <br>
+        Department of Industrial Engineering<br>
+        Assistant Professor<br>
+        Sep 2026 – Now
+        </p>
+    </div>
+</div>
 
 </div>
 
 <div class="section" id="education">
 <h2>Education</h2>
 
-<p>
-<strong>The University of Hong Kong</strong><br>
-University Research Committee Postdoctoral Fellowship<br>
-Oct 2025 – Aug 2026<br>
-Supervisor: Prof. Yong-hong Kuo
-</p>
+<div class="item">
+    <img src="HKULogo.png" class="logo">
+    <div class="item-text">
+        <div class="item-header">
+        <strong>The University of Hong Kong</strong>
+        <span class="location">Hong Kong SAR of China</span>
+    </div>
+        <p>
+        University Research Committee Postdoctoral Fellowship<br>
+        Oct 2025 – Aug 2026<br>
+        Supervisor: Prof. Yong-hong Kuo
+        </p>
+    </div>
+</div>
 
-<p>
-<strong>The University of Hong Kong</strong><br>
-Doctor of Philosophy in Industrial Engineering<br>
-Sep 2020 – Sep 2025<br>
-Supervisor: Prof. Yong-hong Kuo
-</p>
+<div class="item">
+    <img src="HKULogo.png" class="logo">
+    <div class="item-text">
+        <div class="item-header">
+        <strong>The University of Hong Kong</strong>
+        <span class="location">Hong Kong SAR of China</span>
+    </div>
+        <p>
+        Doctor of Philosophy in Industrial Engineering<br>
+        Sep 2020 – Sep 2025<br>
+        Supervisor: Prof. Yong-hong Kuo
+        </p>
+    </div>
+</div>
 
-<p>
-<strong>Imperial College London</strong><br>
-Master of Engineering in Civil and Environmental Engineering<br>
-Sep 2016 – Jun 2020<br>
-Thesis Supervisor: Prof. Panagiotis Angeloudis
-</p>
-
-<img src="HKULogo.png" class="logo">
-<img src="Imperial1.png" class="logo">
+<div class="item">
+    <img src="Imperial1.png" class="logo">
+    <div class="item-text">
+        <div class="item-header">
+        <strong>Imperial College London</strong>
+        <span class="location">London, United Kingdom</span>
+    </div>
+        <p>
+        <br>
+        Master of Engineering in Civil and Environmental Engineering<br>
+        Sep 2016 – Jun 2020<br>
+        Thesis Supervisor: Prof. Panagiotis Angeloudis
+        </p>
+    </div>
+</div>
 
 </div>
 
